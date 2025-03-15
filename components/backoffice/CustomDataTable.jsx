@@ -129,7 +129,7 @@ export default function CustomDataTable() {
             </li>
             {Array.from({ length: totalPages }, (_, index) => {
               return (
-                <li>
+                <li key={index}>
                   <button
                     onClick={() => setCurrentPage(index + 1)}
                     disabled={currentPage === index + 1}

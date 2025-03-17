@@ -12,31 +12,35 @@ export default function SmallCards() {
     {
       title: "Total Order",
       amount: 500,
-      color: "bg-green-500",
+      color: "bg-orange-100",
+      bgColor: "bg-orange-500",
       icon: <ShoppingCart />,
     },
     {
       title: "Pending Order",
       amount: 30,
-      color: "bg-blue-500",
+      color: "bg-orange-100",
+      bgColor: "bg-orange-500",
       icon: <LoaderCircle />,
     },
     {
       title: "Order en process",
       amount: 100,
-      color: "bg-orange-500",
+      color: "bg-orange-100",
+      bgColor: "bg-orange-500",
       icon: <PackageSearch />,
     },
     {
       title: "Delivered Order",
       amount: 730,
-      color: "bg-purple-500",
+      color: "bg-orange-100",
+      bgColor: "bg-orange-500",
       icon: <CheckCheck />,
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-4">
+    <div className="tab-enter grid gap-4 md:grid-cols-2 xl:grid-cols-4">
       {orderStatus.map((data, i) => (
         <SmallCard key={i} data={data} />
       ))}

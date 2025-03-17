@@ -7,151 +7,227 @@ import {
   Settings,
   X,
 } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function NavBar() {
   return (
-    <div className="flex items-center justify-between pl-72 z-40 bg-slate-800 text-slate-50 h-16 px-12 py-4 fixed top-0 w-full right-0  ">
-      {/* icon */}
-      <button>
-        <AlignJustify />
-      </button>
-      {/* 3icons */}
-      <div className="flex space-x-3">
-        <button>
-          <Sun className="text-green-800" />
+    <div className="z-30 py-4 bg-white shadow-sm dark:bg-gray-800">
+      <div className="container flex items-center justify-between h-full px-6 mx-auto text-emerald-500 dark:text-emerald-500">
+        <button
+          type="button"
+          className="hidden lg:block outline-0 focus:outline-none "
+        >
+          <AlignJustify />
         </button>
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <div className="relative inline-flex items-center p-2 text-sm font-medium text-center text-white bg-transparent rounded-lg ">
-              <Bell className="text-green-800" />
-              <span className="sr-only">Notifications</span>
-              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500  rounded-full -top-1 -end-1 dark:border-gray-900">
-                20
-              </div>
-            </div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="py-2 px-4 pr-8">
-            <DropdownMenuLabel>Notifications</DropdownMenuLabel>
-            <DropdownMenuItem>
-              <div className="flex items-center space-x-2">
-                <Image
-                  src="/profile.jpg"
-                  width={200}
-                  height={200}
-                  alt="User Profile"
-                  className="rounded-full h-8 w-8"
-                />
-                <div className="flex flex-col space-y-1">
-                  <p>Yellow sweet corn stock out,please</p>
-                  <div className="flex items-center space-x-2 ">
-                    <p className="px-2 py-1 bg-red-600 text-white rounded-full text-sm ">
-                      stock out
-                    </p>
-                    <p>March 12 2025 -12:22 pm </p>
-                  </div>
-                </div>
-                <button>
-                  <X />
-                </button>
-              </div>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <div className="flex items-center space-x-2 ">
-                <Image
-                  src="/profile.jpg"
-                  width={200}
-                  height={200}
-                  alt="User Profile"
-                  className="rounded-full h-8 w-8"
-                />
-                <div className="flex flex-col space-y-1">
-                  <p>Yellow sweet corn stock out,please</p>
-                  <div className="flex items-center space-x-2 ">
-                    <p className="px-2 py-1 bg-red-600 text-white rounded-full text-sm ">
-                      stock out
-                    </p>
-                    <p>March 12 2025 -12:22 pm </p>
-                  </div>
-                </div>
-                <button>
-                  <X />
-                </button>
-              </div>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <div className="flex items-center space-x-2">
-                <Image
-                  src="/profile.jpg"
-                  width={200}
-                  height={200}
-                  alt="User Profile"
-                  className="rounded-full h-8 w-8"
-                />
-                <div className="flex flex-col space-y-1">
-                  <p>Yellow sweet corn stock out,please</p>
-                  <div className="flex items-center space-x-2 ">
-                    <p className="px-2 py-1 bg-red-600 text-white rounded-full text-sm ">
-                      stock out
-                    </p>
-                    <p>March 12 2025 -12:22 pm </p>
-                  </div>
-                </div>
-                <button>
-                  <X />
-                </button>
-              </div>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger>
+        <ul className="flex justify-end items-center flex-shrink-0 space-x-6">
+          <li>
             <div>
-              <Image
-                src="/profile.jpg"
-                width={200}
-                height={200}
-                alt="User Profile"
-                className="rounded-full h-8 w-8"
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <div className="flex items-center ">
+                    <Image
+                      src="/english.png"
+                      alt="English"
+                      height={20}
+                      width={20}
+                    />
+                    <span className="ml-3">English</span>
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <div className="flex items-center ">
+                      <Image
+                        src="/arabic.png"
+                        alt="Arabic"
+                        height={20}
+                        width={20}
+                      />
+                      <span className="ml-2">Arabic</span>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <div className="flex items-center ">
+                      <Image
+                        src="/germany.png"
+                        alt="Germany"
+                        height={20}
+                        width={20}
+                      />
+                      <span className="ml-2">Germany</span>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <div className="flex items-center ">
+                      <Image
+                        src="/india.png"
+                        alt="India"
+                        height={20}
+                        width={20}
+                      />
+                      <span className="ml-2">India</span>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <div className="flex items-center ">
+                      <Image
+                        src="/urdu.png"
+                        alt="Urdu"
+                        height={20}
+                        width={20}
+                      />
+                      <span className="ml-2">Urdu</span>
+                    </div>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="py-2 px-4 pr-8">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <div className="flex items-center space-x-2">
-                <LayoutDashboard className="mr-2 h-4 w-4" />
-                <span>Dashboard</span>
-              </div>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <div className="flex items-center space-x-2">
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Edit Profile</span>
-              </div>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <div className="flex items-center space-x-2">
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Logout</span>
-              </div>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </li>
+          <li className="flex">
+            <div className="rounded-md focus:outline-none">
+              <Sun />
+            </div>
+          </li>
+          <li className="relative inline-block text-left">
+            <div className="relative align-middle rounded-md focus:outline-none">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Bell />
+                  <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
+                    5
+                  </span>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="py-2 px-4 pr-8">
+                  <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <div className="flex items-center space-x-2">
+                      <Image
+                        src="/profile.jpg"
+                        width={200}
+                        height={200}
+                        alt="User Profile"
+                        className="rounded-full h-8 w-8"
+                      />
+                      <div className="flex flex-col space-y-1">
+                        <p>Yellow sweet corn stock out,please</p>
+                        <div className="flex items-center space-x-2 ">
+                          <p className="px-2 py-1 bg-red-600 text-white rounded-full text-sm ">
+                            stock out
+                          </p>
+                          <p>March 12 2025 -12:22 pm </p>
+                        </div>
+                      </div>
+                      <div>
+                        <X />
+                      </div>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <div className="flex items-center space-x-2 ">
+                      <Image
+                        src="/profile.jpg"
+                        width={200}
+                        height={200}
+                        alt="User Profile"
+                        className="rounded-full h-8 w-8"
+                      />
+                      <div className="flex flex-col space-y-1">
+                        <p>Yellow sweet corn stock out,please</p>
+                        <div className="flex items-center space-x-2 ">
+                          <p className="px-2 py-1 bg-red-600 text-white rounded-full text-sm ">
+                            stock out
+                          </p>
+                          <p>March 12 2025 -12:22 pm </p>
+                        </div>
+                      </div>
+                      <div>
+                        <X />
+                      </div>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <div className="flex items-center space-x-2">
+                      <Image
+                        src="/profile.jpg"
+                        width={200}
+                        height={200}
+                        alt="User Profile"
+                        className="rounded-full h-8 w-8"
+                      />
+                      <div className="flex flex-col space-y-1">
+                        <p>Yellow sweet corn stock out,please</p>
+                        <div className="flex items-center space-x-2 ">
+                          <p className="px-2 py-1 bg-red-600 text-white rounded-full text-sm ">
+                            stock out
+                          </p>
+                          <p>March 12 2025 -12:22 pm </p>
+                        </div>
+                      </div>
+                      <div>
+                        <X />
+                      </div>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </li>
+          <li className="relative inline-block text-left">
+            <div className="rounded-full dark:bg-gray-500 bg-emerald-500 text-white h-8 w-8 font-medium mx-auto focus:outline-none">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <div
+                    className="relative rounded-full inline-block w-8 h-8 align-middle"
+                    aria-hidden="true"
+                  >
+                    <Image
+                      src="/profile.jpg"
+                      alt="User Profile"
+                      width={100}
+                      height={100}
+                      className="rounded-full object-cover w-full h-full"
+                    />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <div className="flex items-center ">
+                      <LayoutDashboard />
+                      <span className="ml-2">Dashboard</span>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <div className="flex items-center ">
+                      <Settings />
+                      <span className="ml-2">Edit Profile</span>
+                    </div>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <div className="flex items-center ">
+                      <LogOut />
+                      <span className="ml-2">Log Out</span>
+                    </div>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   );

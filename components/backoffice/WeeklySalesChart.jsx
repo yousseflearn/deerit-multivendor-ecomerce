@@ -29,10 +29,6 @@ export default function WeeklySalesChart() {
       legend: {
         position: "top",
       },
-      title: {
-        display: true,
-        text: "Sales & Orders Line Chart",
-      },
     },
   };
   const labels = [
@@ -85,21 +81,23 @@ export default function WeeklySalesChart() {
   const [chartToDisplay, setChartToDisplay] = useState(tabs[0].type);
 
   return (
-    <div className="bg-slate-700 p-8 rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Weekly Charts</h2>
+    <div className="min-w-0 p-4 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+      <p className="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+        Weekly Sales
+      </p>
       {/* Tabs */}
 
-      <div className="text-sm font-medium text-center text-gray-200 border-b border-gray-400 dark:text-gray-400 dark:border-gray-700">
+      <div className="ml-6 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mb-4">
         <ul className="flex flex-wrap -mb-px">
           {tabs.map((tab, i) => {
             return (
-              <li className="me-2" key={i}>
+              <li className="mr-2" key={i}>
                 <button
                   onClick={() => setChartToDisplay(tab.type)}
                   className={
                     chartToDisplay === tab.type
-                      ? "inline-block p-4 text-orange-600 border-b-2 border-orange-600 rounded-t-lg active dark:text-orange-500 dark:border-orange-500"
-                      : "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-100 dark:hover:text-gray-100"
+                      ? "inline-block p-2 rounded-t-lg border-b-2 border-transparent text-emerald-600  border-emerald-600 active dark:text-emerald-500 dark:border-emerald-500 focus:outline-none"
+                      : "inline-block p-2 rounded-t-lg border-b-2 border-transparent  hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 focus:outline-none"
                   }
                 >
                   {tab.title}
@@ -113,7 +111,14 @@ export default function WeeklySalesChart() {
       {/* Content to display */}
       {tabs.map((tab, i) => {
         if (chartToDisplay === tab.type) {
-          return <Line options={options} data={tab.data} key={i} />;
+          return (
+            <div
+              key={i}
+              className="flex flex-col items-center justify-between "
+            >
+              <Line options={options} data={tab.data} />
+            </div>
+          );
         }
         return null;
       })}

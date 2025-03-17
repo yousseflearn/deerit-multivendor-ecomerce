@@ -6,8 +6,6 @@ body {
   min-height: 100svh;
 }
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -64,13 +62,29 @@ body {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.container {
+  width: 100%;
+}
+.tab-enter {
+  animation: enterAnimation 0.8s ease forwards;
+}
+
+@keyframes enterAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

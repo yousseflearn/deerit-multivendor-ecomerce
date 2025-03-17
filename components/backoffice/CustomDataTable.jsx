@@ -14,95 +14,178 @@ export default function CustomDataTable() {
 
   return (
     <div className="">
-      <h2 className="text-xl font-bold mb-4 mt-4">Recent Orders</h2>
+      <h2 className="my-1 text-lg font-bold text-gray-700 dark:text-gray-300">
+        Recent Orders
+      </h2>
       {/* Table */}
 
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="p-4">
-                <div className="flex items-center">
-                  <input
-                    id="checkbox-all-search"
-                    type="checkbox"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label htmlFor="checkbox-all-search" className="sr-only">
-                    checkbox
-                  </label>
-                </div>
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Id
-              </th>
-              <th scope="col" className="px-6 py-3">
-                First Name
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Last Name
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Email
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Gender
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentDisplayedData.map((item, i) => {
-              return (
-                <tr
-                  key={i}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                >
-                  <td className="w-4 p-4">
-                    <div className="flex items-center">
-                      <input
-                        id="checkbox-table-search-1"
-                        type="checkbox"
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      />
-                      <label
-                        htmlFor="checkbox-table-search-1"
-                        className="sr-only"
-                      >
-                        checkbox
-                      </label>
-                    </div>
-                  </td>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {item.id}
-                  </th>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {item.firstName}
-                  </th>
-                  <td className="px-6 py-4">{item.LastName}</td>
-                  <td className="px-6 py-4">{item.email}</td>
-                  <td className="px-6 py-4">{item.gender}</td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="w-full overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg mt-6 mb-8">
+        <div className="w-full overflow-x-auto">
+          <table className="w-full whitespace-nowrap">
+            <thead className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:text-gray-400 dark:bg-gray-800">
+              <tr>
+                <th scope="col" className="p-4">
+                  <div className="flex items-center">
+                    <input
+                      id="checkbox-all-search"
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    />
+                    <label htmlFor="checkbox-all-search" className="sr-only">
+                      checkbox
+                    </label>
+                  </div>
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  INVOICE
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  ORDER TIME
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  CUSTOMER NAME
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  METHOD
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  AMOUNT
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  STATUS
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  ACTION
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  INVOICE
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-100 dark:divide-gray-700 text-gray-800 dark:text-gray-400 dark:bg-gray-900">
+              {currentDisplayedData.map((item, i) => {
+                return (
+                  <tr key={i} className="px-4 py-2">
+                    <td className="w-4 p-4">
+                      <div className="flex items-center">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
+                          checkbox
+                        </label>
+                      </div>
+                    </td>
+                    <td className="px-4 py-2">
+                      <span className="font-semibold uppercase text-xs">
+                        {item.invoice}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      <span className="text-sm">{item.orderTime}</span>
+                    </td>
+                    <td className="px-4 py-2 text-xs">
+                      <span className="text-sm">{item.customerName}</span>
+                    </td>
+                    <td className="px-4 py-2">
+                      <span className="text-sm font-semibold">
+                        {item.method}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2">
+                      <span className="text-sm font-semibold">
+                        {item.amount}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 text-xs">
+                      <span className="font-serif">
+                        <span className="inline-flex px-2 text-xs font-medium leading-5 rounded-full text-emerald-600 bg-emerald-100 dark:bg-emerald-800 dark:text-emerald-100">
+                          {item.status}
+                        </span>
+                      </span>
+                    </td>
+                    <td className="px-4 py-2">
+                      <select className="block w-full  border bg-gray-100 px-2 py-1 text-sm dark:text-gray-300 focus:outline-none rounded-md form-select focus:bg-white dark:focus:bg-gray-700 focus:border-gray-200 border-gray-200 dark:border-gray-600 focus:shadow-none dark:focus:border-gray-500 dark:bg-gray-700 leading-5 h-8">
+                        <option value="status" hidden="">
+                          Delivered
+                        </option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Cancel">Cancel</option>
+                      </select>
+                    </td>
+                    <td className="px-4 py-2 text-right flex justify-end">
+                      <div class="flex justify-between items-center">
+                        <button
+                          type="button"
+                          className="ml-2 p-2 cursor-pointer text-gray-500 hover:text-emerald-600 focus:outline-none"
+                        >
+                          <p data-tooltip-id="receipt" className="text-xl">
+                            <svg
+                              stroke="currentColor"
+                              fill="none"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              height="1em"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                              <rect x="6" y="14" width="12" height="8"></rect>
+                            </svg>
+                          </p>
+                        </button>
+                        <span className="p-2 cursor-pointer text-gray-400 hover:text-emerald-600">
+                          <a href="/order/67d8162fc956c500038d0232">
+                            <p data-tooltip-id="view" className="text-xl">
+                              <svg
+                                stroke="currentColor"
+                                fill="none"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                height="1em"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line
+                                  x1="21"
+                                  y1="21"
+                                  x2="16.65"
+                                  y2="16.65"
+                                ></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                              </svg>
+                            </p>
+                            <div
+                              id="view"
+                              role="tooltip"
+                              className="react-tooltip core-styles-module_tooltip__3vRRp styles-module_tooltip__mnnfp styles-module_dark__xNqje react-tooltip__place-left core-styles-module_closing__sGnxF react-tooltip__closing"
+                            >
+                              <div className="react-tooltip-arrow core-styles-module_arrow__cvMwQ styles-module_arrow__K0L3T"></div>
+                            </div>
+                          </a>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
         <nav
           className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
           aria-label="Table navigation"

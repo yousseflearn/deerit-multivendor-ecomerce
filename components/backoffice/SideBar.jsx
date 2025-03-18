@@ -14,14 +14,14 @@ import {
 export default function SideBar() {
   return (
     <div className="z-30 flex-shrink-0 hidden shadow-sm w-64 overflow-y-auto bg-white dark:bg-gray-800 lg:block">
-      <div className="py-4 text-gray-500 dark:text-gray-400">
+      <div className="py-4 text-gray-500 dark:text-gray-400 ">
         <Link className="text-gray-900 dark:text-gray-200" href="">
           <Image
             src="/logo.jpg"
             alt="DeerIT"
-            width={100}
-            height={100}
-            className="pl-6 rounded-full"
+            width={50}
+            height={50}
+            className="mx-12 rounded-full "
           />
         </Link>
         <ul className="mt-8">

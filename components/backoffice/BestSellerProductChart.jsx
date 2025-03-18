@@ -40,7 +40,7 @@ export default function BestSellerProductChart() {
         Best Selling Products
       </p>
       {/* Chart */}
-      <div className="w-96 flex flex-col items-center justify-between mt-6">
+      <div className="w-full h-full flex flex-col items-center justify-between mt-6">
         <div>
           <Pie data={data} />
         </div>

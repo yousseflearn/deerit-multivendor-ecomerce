@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import Image from "next/image";
+import { ModeToggle } from "../ModeToggle";
 
 export default function NavBar() {
   return (
@@ -96,7 +97,7 @@ export default function NavBar() {
           </li>
           <li className="flex">
             <div className="rounded-md focus:outline-none">
-              <Sun />
+              <ModeToggle />
             </div>
           </li>
           <li className="relative inline-block text-left">

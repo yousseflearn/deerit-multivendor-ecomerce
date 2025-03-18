@@ -121,7 +121,7 @@ export default function CustomDataTable() {
                       </select>
                     </td>
                     <td className="px-4 py-2 text-right flex justify-end">
-                      <div class="flex justify-between items-center">
+                      <div className="flex justify-between items-center">
                         <button
                           type="button"
                           className="ml-2 p-2 cursor-pointer text-gray-500 hover:text-emerald-600 focus:outline-none"
@@ -192,11 +192,11 @@ export default function CustomDataTable() {
         >
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto ">
             Showing
-            <span className="font-semibold text-gray-50 dark:text-white mx-2">
+            <span className="font-semibold text-gray-800 dark:text-white mx-2">
               {startIndexPage}-{endIndexPage}
             </span>
             of
-            <span className="font-semibold text-gray-50 dark:text-white ml-2">
+            <span className="font-semibold text-gray-800 dark:text-white ml-2">
               {data.length}
             </span>
           </span>

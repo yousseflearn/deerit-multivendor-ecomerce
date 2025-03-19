@@ -1,10 +1,7 @@
 "use client";
+
 import { ThemeProvider } from "next-themes";
 
-export default function Providers({ children }) {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
-      {children}
-    </ThemeProvider>
-  );
+export function Providers({ children, ...props }) {
+  return <ThemeProvider {...props}>{children}</ThemeProvider>;
 }

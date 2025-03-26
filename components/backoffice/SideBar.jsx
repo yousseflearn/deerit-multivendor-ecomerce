@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../public/logo.jpg";
 import {
   ArchiveRestore,
@@ -14,15 +14,19 @@ import {
   Settings,
   Layers,
   LogOut,
+  ChevronRight,
+  TicketPercent,
+  SquareMenu,
+  ChartColumnStacked,
+  Boxes,
+  ChevronDown,
 } from "lucide-react";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+
 import { usePathname } from "next/navigation";
 
 export default function SideBar() {
@@ -64,6 +68,34 @@ export default function SideBar() {
       href: "/dashboard/store",
     },
   ];
+  const categoryLinks = [
+    {
+      title: "Products",
+      icon: Boxes,
+      href: "/dashboard/products",
+    },
+    {
+      title: "Categories",
+      icon: ChartColumnStacked,
+      href: "/dashboard/categories",
+    },
+    {
+      title: "Attributes",
+      icon: SquareMenu,
+      href: "/dashboard/attributes",
+    },
+    {
+      title: "Coupons",
+      icon: TicketPercent,
+      href: "/dashboard/coupons",
+    },
+    {
+      title: "Store Sliders",
+      icon: User,
+      href: "/dashboard/sliders",
+    },
+  ];
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <div className="z-30 space-y-6 flex-shrink-0 hidden shadow-sm w-64 overflow-y-auto bg-white dark:bg-gray-800 lg:block">
       <Link
@@ -73,7 +105,7 @@ export default function SideBar() {
         <Image src={logo} alt="DeerIT logo" className="rounded-full w-12 " />
         <span className="ml-2">DeerIT</span>
       </Link>
-      <div className="flex flex-col space-y-3 mt-14">
+      <div className="flex flex-col  mt-14">
         <Link
           className={
             pathName === "/dashboard"
@@ -87,19 +119,48 @@ export default function SideBar() {
           <LayoutGrid />
           <span>Dashboard</span>
         </Link>
-        <Link
-          className={
-            pathName === "/dashboard"
-              ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
-              : "space-x-3 px-6 py-2  flex items-center"
-          }
-          target="_self"
-          rel="noreferrer"
-          href="/dashboard"
-        >
-          <Layers />
-          <span>Catalogue</span>
-        </Link>
+        <div className="flex items-center space-x-3    ">
+          <Collapsible>
+            <CollapsibleTrigger>
+              <div
+                className={
+                  pathName === "#"
+                    ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
+                    : "space-x-3 px-6 py-2  flex items-center hover:text-emerald-600 hover:border-l-4 border-emerald-600"
+                }
+                target="_self"
+                rel="noreferrer"
+                href="#"
+                onClick={() => setOpenMenu(!openMenu)}
+              >
+                <Layers />
+                <span>Catalogue</span>
+                {openMenu ? <ChevronDown /> : <ChevronRight />}
+              </div>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="ml-6 px-3  text-sm dark:bg-gray-900">
+              {categoryLinks.map((Item, index) => {
+                const Icon = Item.icon;
+                return (
+                  <Link
+                    key={index}
+                    className={
+                      pathName === Item.href
+                        ? "space-x-3 px-6 py-2 text-emerald-600  flex items-center "
+                        : "space-x-3 px-6 py-2  flex items-center hover:text-emerald-600"
+                    }
+                    target="_self"
+                    rel="noreferrer"
+                    href={Item.href}
+                  >
+                    <Icon />
+                    <span>{Item.title}</span>
+                  </Link>
+                );
+              })}
+            </CollapsibleContent>
+          </Collapsible>
+        </div>
         {sidebarLinks.map((Item, index) => {
           const Icon = Item.icon;
           return (
@@ -108,7 +169,7 @@ export default function SideBar() {
               className={
                 pathName === Item.href
                   ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
-                  : "space-x-3 px-6 py-2  flex items-center"
+                  : "space-x-3 px-6 py-2  flex items-center hover:text-emerald-600"
               }
               target="_self"
               rel="noreferrer"

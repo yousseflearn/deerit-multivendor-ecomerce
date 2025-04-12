@@ -7,14 +7,16 @@ import React from "react";
 
 export default function page() {
   return (
-    <div>
+    <div className="sm:container grid lg:px-6 sm:px-4 px-2 mx-auto">
       <Heading title="dashboard Overview" />
-      {/* Large Cards */}
-      <LargeCards />
-      {/* Small Cards */}
-      <SmallCards />
-      {/* Charts */}
-      <DashboardCharts />
+      <div className="tab tab-enter">
+        {/* Large Cards */}
+        <LargeCards />
+        {/* Small Cards */}
+        <SmallCards />
+        {/* Charts */}
+        <DashboardCharts />
+      </div>
       {/* DataTables */}
       <CustomDataTable />
     </div>

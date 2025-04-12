@@ -81,13 +81,13 @@ export default function WeeklySalesChart() {
   const [chartToDisplay, setChartToDisplay] = useState(tabs[0].type);
 
   return (
-    <div className="min-w-0 p-4 bg-white rounded-lg shadow-sm dark:bg-gray-800">
+    <div className="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
       <p className="mb-4 font-semibold text-gray-800 dark:text-gray-300">
         Weekly Sales
       </p>
       {/* Tabs */}
 
-      <div className="ml-6 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mb-4">
+      <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mb-4">
         <ul className="flex flex-wrap -mb-px">
           {tabs.map((tab, i) => {
             return (

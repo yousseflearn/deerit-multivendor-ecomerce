@@ -20,17 +20,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { ModeToggle } from "../ModeToggle";
 
-export default function NavBar() {
+export default function NavBar({ SetShowSidebar, showSideBar }) {
   return (
     <div className="z-30 py-4 bg-white shadow-sm dark:bg-gray-800">
       <div className="container flex items-center justify-between h-full px-6 mx-auto text-emerald-500 dark:text-emerald-500">
         <button
+          onClick={() => SetShowSidebar(!showSideBar)}
           type="button"
-          className="hidden lg:block outline-0 focus:outline-none "
+          className=" "
         >
           <AlignJustify />
         </button>
-        <ul className="flex justify-end items-center flex-shrink-0 space-x-6">
+        <ul className="flex space-x-3">
           <li>
             <div>
               <DropdownMenu>

@@ -20,6 +20,8 @@ import {
   ChartColumnStacked,
   Boxes,
   ChevronDown,
+  Wallet,
+  Users,
 } from "lucide-react";
 import {
   Collapsible,
@@ -29,7 +31,7 @@ import {
 
 import { usePathname } from "next/navigation";
 
-export default function SideBar() {
+export default function SideBar({ showSideBar, SetShowSidebar }) {
   const pathName = usePathname();
   const sidebarLinks = [
     {
@@ -53,9 +55,19 @@ export default function SideBar() {
       href: "/dashboard/orders",
     },
     {
-      title: "Staff",
+      title: "Our Staff",
       icon: User,
       href: "/dashboard/staff",
+    },
+    {
+      title: "DeerIT Community",
+      icon: Users,
+      href: "/dashboard/community",
+    },
+    {
+      title: "Wallet",
+      icon: Wallet,
+      href: "/dashboard/wallet",
     },
     {
       title: "Settings",
@@ -97,95 +109,100 @@ export default function SideBar() {
   ];
   const [openMenu, setOpenMenu] = useState(false);
   return (
-    <div className="z-30 space-y-6 flex-shrink-0 hidden shadow-sm w-64 overflow-y-auto bg-white dark:bg-gray-800 lg:block">
-      <Link
-        className="logo.jpg text-gray-900 dark:text-gray-200 flex items-center justify-start px-6 py-2"
-        href="/dashboard"
-      >
-        <Image src={logo} alt="DeerIT logo" className="rounded-full w-12 " />
-        <span className="ml-2">DeerIT</span>
-      </Link>
-      <div className="flex flex-col  mt-14">
+    <div
+      className={
+        showSideBar
+          ? "fixed inset-y-0 z-50 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 lg:hidden"
+          : "z-30 flex-shrink-0 hidden shadow-sm w-64 overflow-y-auto bg-white dark:bg-gray-800 lg:block"
+      }
+    >
+      <div className="py-4 text-gray-500 dark:text-gray-400">
         <Link
-          className={
-            pathName === "/dashboard"
-              ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
-              : "space-x-3 px-6 py-2  flex items-center"
-          }
-          target="_self"
-          rel="noreferrer"
+          onClick={() => SetShowSidebar(false)}
+          className="logo.jpg text-gray-900 dark:text-gray-200 flex items-center justify-start px-6 py-2"
           href="/dashboard"
         >
-          <LayoutGrid />
-          <span>Dashboard</span>
+          <Image src={logo} alt="DeerIT logo" className="rounded-full w-12 " />
+          <span className="ml-2">DeerIT</span>
         </Link>
-        <div className="flex items-center space-x-3    ">
-          <Collapsible>
-            <CollapsibleTrigger>
-              <div
-                className={
-                  pathName === "#"
-                    ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
-                    : "space-x-3 px-6 py-2  flex items-center hover:text-emerald-600 hover:border-l-4 border-emerald-600"
-                }
-                target="_self"
-                rel="noreferrer"
-                href="#"
-                onClick={() => setOpenMenu(!openMenu)}
-              >
-                <Layers />
-                <span>Catalogue</span>
+        <div className="flex flex-col space-y-3 mt-14">
+          <Link
+            onClick={() => SetShowSidebar(false)}
+            className={
+              pathName === "/dashboard"
+                ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
+                : "space-x-3 px-6 py-2  flex items-center"
+            }
+            target="_self"
+            rel="noreferrer"
+            href="/dashboard"
+          >
+            <LayoutGrid />
+            <span>Dashboard</span>
+          </Link>
+          <Collapsible className="px-6 py-2">
+            <CollapsibleTrigger
+              className=""
+              onClick={() => setOpenMenu(!openMenu)}
+            >
+              <div className="flex items-center space-x-6 py-2 hover:text-emerald-600 ">
+                <div className="flex items-center space-x-3">
+                  <Layers />
+                  <span>Catalogue</span>
+                </div>
                 {openMenu ? <ChevronDown /> : <ChevronRight />}
               </div>
             </CollapsibleTrigger>
-            <CollapsibleContent className="ml-6 px-3  text-sm dark:bg-gray-900">
+            <CollapsibleContent className="pl-6 px-3 py-2 rounded-lg dark:bg-gray-900">
               {categoryLinks.map((Item, index) => {
                 const Icon = Item.icon;
                 return (
                   <Link
+                    onClick={() => SetShowSidebar(false)}
                     key={index}
                     className={
                       pathName === Item.href
-                        ? "space-x-3 px-6 py-2 text-emerald-600  flex items-center "
-                        : "space-x-3 px-6 py-2  flex items-center hover:text-emerald-600"
+                        ? "space-x-3 text-sm  py-1.5 text-emerald-600  flex items-center "
+                        : "space-x-3 text-sm  py-1.5  flex items-center hover:text-emerald-600"
                     }
                     target="_self"
                     rel="noreferrer"
                     href={Item.href}
                   >
-                    <Icon />
+                    <Icon className="w-4 h-4" />
                     <span>{Item.title}</span>
                   </Link>
                 );
               })}
             </CollapsibleContent>
           </Collapsible>
+          {sidebarLinks.map((Item, index) => {
+            const Icon = Item.icon;
+            return (
+              <Link
+                onClick={() => SetShowSidebar(false)}
+                key={index}
+                className={
+                  pathName === Item.href
+                    ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
+                    : "space-x-3 px-6 py-2  flex items-center hover:text-emerald-600"
+                }
+                target="_self"
+                rel="noreferrer"
+                href={Item.href}
+              >
+                <Icon />
+                <span>{Item.title}</span>
+              </Link>
+            );
+          })}
         </div>
-        {sidebarLinks.map((Item, index) => {
-          const Icon = Item.icon;
-          return (
-            <Link
-              key={index}
-              className={
-                pathName === Item.href
-                  ? "space-x-3 px-6 py-2 text-emerald-600 border-l-4 border-emerald-600 flex items-center"
-                  : "space-x-3 px-6 py-2  flex items-center hover:text-emerald-600"
-              }
-              target="_self"
-              rel="noreferrer"
-              href={Item.href}
-            >
-              <Icon />
-              <span>{Item.title}</span>
-            </Link>
-          );
-        })}
-      </div>
-      <div className=" px-6 py-2">
-        <button className="flex px-12 py-2 items-center space-x-3 rounded-md bg-emerald-500 w-full  ">
-          <LogOut />
-          <span>Log Out</span>
-        </button>
+        <div className=" px-6 py-2">
+          <button className="flex px-12 py-2 items-center space-x-3 rounded-md bg-emerald-500 w-full  ">
+            <LogOut />
+            <span>Log Out</span>
+          </button>
+        </div>
       </div>
     </div>
   );

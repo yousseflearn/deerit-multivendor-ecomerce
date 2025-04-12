@@ -1,20 +1,26 @@
+"use client";
 import NavBar from "@/components/backoffice/NavBar";
 import SideBar from "@/components/backoffice/SideBar";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Layout({ children }) {
+  const [showSideBar, SetShowSidebar] = useState(false);
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900 false">
+    <div
+      className={
+        showSideBar
+          ? "flex h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden"
+          : "flex h-screen bg-gray-50 dark:bg-gray-900 false"
+      }
+    >
       {/* Sidebar */}
-      <SideBar />
+      <SideBar showSideBar={showSideBar} SetShowSidebar={SetShowSidebar} />
       {/* Main content */}
       <div className="flex flex-col flex-1 w-full">
         {/* Header */}
-        <NavBar />
+        <NavBar SetShowSidebar={SetShowSidebar} showSideBar={showSideBar} />
         {/* Main */}
-        <main className="h-full overflow-y-auto sm:container grid lg:px-6 sm:px-4 px-2 mx-auto ">
-          {children}
-        </main>
+        <main className="h-full overflow-y-auto">{children}</main>
       </div>
     </div>
   );

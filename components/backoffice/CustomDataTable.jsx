@@ -13,13 +13,13 @@ export default function CustomDataTable() {
   const endIndexPage = Math.min(startIndex + PAGE_SIZE, data.length);
 
   return (
-    <div className="">
-      <h2 className="my-1 text-lg font-bold text-gray-700 dark:text-gray-300">
+    <>
+      <h2 className="my-6 text-lg font-bold text-gray-700 dark:text-gray-300">
         Recent Orders
       </h2>
       {/* Table */}
 
-      <div className="w-full overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg mt-6 mb-8">
+      <div className="w-full overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg mb-8">
         <div className="w-full overflow-x-auto">
           <table className="w-full whitespace-nowrap">
             <thead className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:text-gray-400 dark:bg-gray-800">
@@ -186,60 +186,59 @@ export default function CustomDataTable() {
             </tbody>
           </table>
         </div>
-        <nav
-          className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
+        <div
+          className="px-4 py-3 border-t border-gray-200 dark:border-gray-700 bg-white text-gray-500 dark:text-gray-400 dark:bg-gray-800"
           aria-label="Table navigation"
         >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto ">
-            Showing
-            <span className="font-semibold text-gray-800 dark:text-white mx-2">
-              {startIndexPage}-{endIndexPage}
+          <div className="flex flex-col justify-between text-xs sm:flex-row text-gray-600 dark:text-gray-400">
+            <span className="flex items-center font-semibold tracking-wide uppercase">
+              {" "}
+              Showing {startIndexPage}-{endIndexPage} of {data.length}{" "}
             </span>
-            of
-            <span className="font-semibold text-gray-800 dark:text-white ml-2">
-              {data.length}
-            </span>
-          </span>
-          <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-            <li>
-              <button
-                onClick={() => setCurrentPage(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </button>
-            </li>
-            {Array.from({ length: totalPages }, (_, index) => {
-              return (
-                <li key={index}>
-                  <button
-                    onClick={() => setCurrentPage(index + 1)}
-                    disabled={currentPage === index + 1}
-                    className={
-                      currentPage === index + 1
-                        ? "flex items-center justify-center px-3 h-8 leading-tight text-white bg-blue-500 border border-blue-200 hover:bg-blue-700 hover:text-white dark:bg-emerald-600 dark:border-emerald-700 dark:text-white dark:hover:bg-emerald-600 dark:hover:text-white"
-                        : "flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    }
-                  >
-                    {index + 1}
-                  </button>
-                </li>
-              );
-            })}
+          </div>
+          <div className="flex mt-2 sm:mt-auto sm:justify-end">
+            {" "}
+            <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+              <li>
+                <button
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                  Previous
+                </button>
+              </li>
+              {Array.from({ length: totalPages }, (_, index) => {
+                return (
+                  <li key={index}>
+                    <button
+                      onClick={() => setCurrentPage(index + 1)}
+                      disabled={currentPage === index + 1}
+                      className={
+                        currentPage === index + 1
+                          ? "flex items-center justify-center px-3 h-8 leading-tight text-white bg-blue-500 border border-blue-200 hover:bg-blue-700 hover:text-white dark:bg-emerald-600 dark:border-emerald-700 dark:text-white dark:hover:bg-emerald-600 dark:hover:text-white"
+                          : "flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                      }
+                    >
+                      {index + 1}
+                    </button>
+                  </li>
+                );
+              })}
 
-            <li>
-              <button
-                onClick={() => setCurrentPage(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
+              <li>
+                <button
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                  Next
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

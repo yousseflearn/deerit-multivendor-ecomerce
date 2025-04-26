@@ -112,7 +112,7 @@ export default function SideBar({ showSideBar, SetShowSidebar }) {
     <div
       className={
         showSideBar
-          ? "fixed inset-y-0 z-50 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 lg:hidden"
+          ? "fixed inset-y-0 z-50 flex-shrink-0 w-64 sm:mt-16 overflow-y-auto bg-white dark:bg-gray-800 lg:hidden"
           : "z-30 flex-shrink-0 hidden shadow-sm w-64 overflow-y-auto bg-white dark:bg-gray-800 lg:block"
       }
     >
@@ -125,7 +125,7 @@ export default function SideBar({ showSideBar, SetShowSidebar }) {
           <Image src={logo} alt="DeerIT logo" className="rounded-full w-12 " />
           <span className="ml-2">DeerIT</span>
         </Link>
-        <div className="flex flex-col space-y-3 mt-14">
+        <div className="flex flex-col space-y-3 mt-12">
           <Link
             onClick={() => SetShowSidebar(false)}
             className={

@@ -71,6 +71,12 @@ body {
   }
 }
 
+@layer base {
+  .tab-enter {
+    animation: enterAnimation 0.8s ease forwards;
+  }
+}
+
 // width
 ::-webkit-scrollbar {
   width: 10px;
@@ -89,4 +95,104 @@ body {
 // Handle on hover
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@keyframes enterAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  .style1 {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    opacity: 1;
+    direction: ltr;
+    border-radius: 14px;
+    transition: opacity 0.25s;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .style2 {
+    height: 28px;
+    width: 115px;
+    margin: 0px;
+    position: relative;
+    background: rgb(14, 159, 110);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .style3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 12px;
+    color: white;
+    padding-left: 8px;
+    padding-top: 1px;
+  }
+  .style33 {
+    height: 28px;
+    width: 42px;
+    position: relative;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .style4 {
+    height: 28px;
+    width: 42px;
+    position: absolute;
+    opacity: 1;
+    right: 0px;
+    top: 0px;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .style44 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%;
+    font-size: 12px;
+    color: white;
+    padding-right: 50px;
+    padding-top: 1px;
+    margin-left: -40px;
+    white-space: nowrap;
+  }
+  .style5 {
+    height: 26px;
+    width: 26px;
+    background: rgb(255, 255, 255);
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    transform: translateX(1px);
+    top: 1px;
+    outline: 0px;
+    border: 0px;
+    transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;
+  }
+  .style6 {
+    border: 0px;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0px;
+    position: absolute;
+    width: 1px;
+  }
 }

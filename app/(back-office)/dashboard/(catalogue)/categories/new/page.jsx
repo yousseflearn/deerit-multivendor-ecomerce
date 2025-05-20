@@ -5,8 +5,11 @@ import TextareaInput from "@/components/FormInputs/TextareaInput";
 import TextInput from "@/components/FormInputs/TextInput";
 import { generateSlug } from "@/lib/generateSlug";
 import { useForm } from "react-hook-form";
-
+import { UploadButton } from "@/lib/uploadthing";
+import { useState } from "react";
+import ImageInput from "@/components/FormInputs/ImageInput";
 export default function NewCategory() {
+  const [imageUrl, setImageUrl] = useState("");
   const {
     register,
     handleSubmit,
@@ -42,6 +45,12 @@ export default function NewCategory() {
             name="Description"
             register={register}
             errors={errors}
+          />
+          <ImageInput
+            label="Category Image"
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            endpoint="categoryImageUploader"
           />
         </div>
         <SubmitButton
